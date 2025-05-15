@@ -25,14 +25,41 @@ public class WebPortalHomeTest {
     }
 
     @Test
-    public  void validateSignUpNow(){
+    public  void validateSignUpNowFunctionality(){
 
     WebDriver driver= new ChromeDriver();
     driver.manage().window().maximize();
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
     driver.get("https://portal.dev-tommycarwash.com/login");
     WebPortalHomePage webPortalHomePage= new WebPortalHomePage(driver);
-    webPortalHomePage.signUpNow(driver, "New to TommyClub?", "innah+registration@tommycarwash.com");
+    webPortalHomePage.signUpNow("New to TommyClub?", "innah+registration@tommycarwash.com");
+}
+
+
+@Test
+    public void validateSignInFunctionality(){
+
+    WebDriver driver= new ChromeDriver();
+    driver.manage().window().maximize();
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    driver.get("https://portal.dev-tommycarwash.com/login");
+    WebPortalHomePage webPortalHomePage= new WebPortalHomePage(driver);
+    webPortalHomePage.logIn("innah+registration1@tommycarwash.com");
+
+
+
+}
+
+@Test
+    public void validateInvalidLogInFunctionality(){
+
+    WebDriver driver= new ChromeDriver();
+    driver.manage().window().maximize();
+    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    driver.get("https://portal.dev-tommycarwash.com/login");
+    WebPortalHomePage webPortalHomePage= new WebPortalHomePage(driver);
+    webPortalHomePage.invalidSignIn("innah+registration1@tommycarwash.com", "Invalid email or phone number");
+
 
 }
 

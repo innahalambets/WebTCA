@@ -46,6 +46,9 @@ public class WebPortalHomePage {
     @FindBy (xpath = "//p[contains(text(), 'New to TommyClub?')]")
     WebElement newToTommyClubText;
 
+    @FindBy (xpath = "//p[@class='message error']")
+    WebElement errorMessage;
+
     public void homePageInformation(WebDriver driver, String expectedHeader, String expectedTitle, String expectedUrl){
         Assert.assertEquals(BrowserUtils.getText(header), expectedHeader);
         Assert.assertTrue(signUpButtonTop.isDisplayed() && signUpButtonTop.isEnabled());
@@ -57,9 +60,9 @@ public class WebPortalHomePage {
 
     }
 
-    public void signUpNow(WebDriver driver, String expectedSignUpText, String loginInput){
+    public void signUpNow(String expectedSignUpText, String loginInput){
 
-        Assert.assertEquals(alreadyHaveAnAccountText,expectedSignUpText );
+        Assert.assertTrue(newToTommyClubText.getText().contains(expectedSignUpText));
         Assert.assertTrue(signUpNowButton.isDisplayed() && signUpNowButton.isEnabled());
         signUpNowButton.click();
         loginInputField.sendKeys(loginInput);
@@ -67,7 +70,22 @@ public class WebPortalHomePage {
 
     }
 
+    public void logIn(String loginInput){
 
+        loginInputField.sendKeys(loginInput);
+        logInButton.click();
+
+
+    }
+
+    public void invalidSignIn(String loginInput, String expectedErrorMessage){
+
+        loginInputField.sendKeys(loginInput);
+        logInButton.click();
+        Assert.assertEquals(BrowserUtils.getText(errorMessage), expectedErrorMessage);
+
+
+    }
 
 
 
