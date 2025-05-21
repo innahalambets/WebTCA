@@ -7,6 +7,8 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import utils.BrowserUtils;
 
+import java.util.Set;
+
 public class WebPortalHomePage {
 
     public WebPortalHomePage(WebDriver driver){
@@ -49,6 +51,12 @@ public class WebPortalHomePage {
     @FindBy (xpath = "//p[@class='message error']")
     WebElement errorMessage;
 
+    @FindBy (xpath = "/html/body/div/div[1]/main/div[2]/div/div/div/div/form/p[1]/text()[2]")
+    WebElement verificationMessage;
+
+    @FindBy (xpath = "//input[@type='submit']")
+    WebElement verifyLogInButton;
+
     public void homePageInformation(WebDriver driver, String expectedHeader, String expectedTitle, String expectedUrl){
         Assert.assertEquals(BrowserUtils.getText(header), expectedHeader);
         Assert.assertTrue(signUpButtonTop.isDisplayed() && signUpButtonTop.isEnabled());
@@ -60,13 +68,20 @@ public class WebPortalHomePage {
 
     }
 
-    public void signUpNow(String expectedSignUpText, String loginInput){
+    public void signUpNow(WebDriver driver, String expectedSignUpText, String loginInput){
 
         Assert.assertTrue(newToTommyClubText.getText().contains(expectedSignUpText));
         Assert.assertTrue(signUpNowButton.isDisplayed() && signUpNowButton.isEnabled());
         signUpNowButton.click();
         loginInputField.sendKeys(loginInput);
         createAccountButton.click();
+        String mainPageId = driver.getWindowHandle();
+        Set<String> allPages =  driver.getWindowHandles();
+        for (String id: allPages){
+            if (!id.equals(mainPageId)){
+                driver.switchTo().window(id);
+            }
+        }
 
     }
 
@@ -74,6 +89,11 @@ public class WebPortalHomePage {
 
         loginInputField.sendKeys(loginInput);
         logInButton.click();
+        Assert.assertTrue(BrowserUtils.getText(verificationMessage).contains(loginInput));
+        //enter verification code
+        verifyLogInButton.click();
+
+
 
 
     }
@@ -83,6 +103,7 @@ public class WebPortalHomePage {
         loginInputField.sendKeys(loginInput);
         logInButton.click();
         Assert.assertEquals(BrowserUtils.getText(errorMessage), expectedErrorMessage);
+
 
 
     }

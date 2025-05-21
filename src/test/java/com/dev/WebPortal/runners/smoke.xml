@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Smoke Suite">
+
+    <test name="WebPortal Tests">
+     <classes>
+         <class name="com.dev.WebPortal.tests.WebPortalHomeTest"> </class>
+         <class name="com.dev.WebPortal.tests.WebPortalAccountTest"> </class>
+     </classes>
+    </test>
+</suite>
+

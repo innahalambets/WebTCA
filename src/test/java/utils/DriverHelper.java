@@ -18,7 +18,7 @@ public class DriverHelper {
 
         if (driver==null || ((RemoteWebDriver)driver).getSessionId()==null){
 
-            switch (ConficReader.readProperty("browser")){
+            switch (ConfigReader.readProperty("browser")){
 
                 case "chrome":
 
