@@ -32,7 +32,7 @@ public class WebPortalHomeTest  extends WebPortalTestBase {
 
 
 @Test
-    public void validateSignInFunctionality(){
+    public void validateSignInFunctionality() {
 
 
     WebPortalHomePage webPortalHomePage= new WebPortalHomePage(driver);

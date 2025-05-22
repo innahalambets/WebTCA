@@ -43,7 +43,7 @@ public class WebPortalAccountPage {
     WebElement createAccountButton;
 
     public void createAccount(WebDriver driver, String regionValue, String firstName, String phoneNumber,
-                              String lastName, String accountTypeValue, String zipCode) {
+                              String lastName, String accountTypeValue, String zipCode) throws InterruptedException {
 
 
         String mainPageId = driver.getWindowHandle();
@@ -61,10 +61,12 @@ public class WebPortalAccountPage {
          this.lastName.sendKeys(lastName);
          Select accountType = new Select(accountTypeDropdown);
          accountType.selectByValue(accountTypeValue);
+         this.zipCode.clear();
          this.zipCode.sendKeys(zipCode);
          Assert.assertTrue(termsAndConditionsCheckbox.isDisplayed() && !termsAndConditionsCheckbox.isSelected());
          termsAndConditionsCheckbox.click();
          createAccountButton.click();
+         Thread.sleep(15000);
 
 
     }

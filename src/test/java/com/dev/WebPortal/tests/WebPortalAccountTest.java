@@ -8,11 +8,12 @@ import utils.ConfigReader;
 public class WebPortalAccountTest extends WebPortalTestBase{
 
     @Test
-    public void validateSignUpFunctionality() {
+    public void validateSignUpFunctionality() throws InterruptedException {
         WebPortalHomePage webPortalHomePage = new WebPortalHomePage(driver);
         WebPortalAccountPage webPortalAccountPage=new WebPortalAccountPage(driver);
         webPortalHomePage.signUpNow(driver,"New to TommyClub?", ConfigReader.readProperty("newEmail"));
-        webPortalAccountPage.createAccount(driver, "3","Inna","6309996655", "Halambets","PrivatePerson","60169");
+        webPortalAccountPage.createAccount(driver, "3","Inna","6309996655",
+                "Halambets","PrivatePerson","49423");
 
 
 
