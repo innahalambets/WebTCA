@@ -27,7 +27,7 @@ public class WebPortalHomeTest  extends WebPortalTestBase {
     public  void validateSignUpNowFunctionality(){
 
     WebPortalHomePage webPortalHomePage= new WebPortalHomePage(driver);
-    webPortalHomePage.signUpNow(driver,"New to TommyClub?", "innah+registration@tommycarwash.com");
+    webPortalHomePage.signUpNow(driver,"Welcome to the Club", "innah+registration@tommycarwash.com");
 }
 
 

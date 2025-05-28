@@ -45,8 +45,8 @@ public class WebPortalHomePage {
     @FindBy (xpath = "//p[contains(text(), 'Already have an account?')]")
     WebElement alreadyHaveAnAccountText;
 
-    @FindBy (xpath = "//p[contains(text(), 'New to TommyClub?')]")
-    WebElement newToTommyClubText;
+    @FindBy (xpath = "//h1")
+    WebElement welcomeToTheClubText;
 
     @FindBy (xpath = "//p[@class='message error']")
     WebElement errorMessage;
@@ -54,8 +54,7 @@ public class WebPortalHomePage {
     @FindBy (xpath = "/html/body/div/div[1]/main/div[2]/div/div/div/div/form/p[1]")
     WebElement verificationMessage;
 
-    @FindBy (xpath = "//input[@type='submit']")
-    WebElement verifyLogInButton;
+
 
     public void homePageInformation(WebDriver driver, String expectedHeader, String expectedTitle, String expectedUrl){
         Assert.assertEquals(BrowserUtils.getText(header), expectedHeader);
@@ -70,7 +69,7 @@ public class WebPortalHomePage {
 
     public void signUpNow(WebDriver driver, String expectedSignUpText, String loginInput){
 
-        Assert.assertTrue(newToTommyClubText.getText().contains(expectedSignUpText));
+        Assert.assertTrue(welcomeToTheClubText.getText().contains(expectedSignUpText));
         Assert.assertTrue(signUpNowButton.isDisplayed() && signUpNowButton.isEnabled());
         signUpNowButton.click();
         loginInputField.sendKeys(loginInput);
@@ -92,11 +91,8 @@ public class WebPortalHomePage {
         //Assert.assertTrue(BrowserUtils.getText(verificationMessage).contains(loginInput));
 
 
-
-
-
-
     }
+
 
     public void invalidSignIn(String loginInput, String expectedErrorMessage){
 

@@ -54,19 +54,21 @@ public class WebPortalAccountPage {
              }
          }
 
-         Select region = new Select(regionDropdown);
-         region.selectByValue(regionValue);
+
+         BrowserUtils.selectBy(regionDropdown, regionValue, "value");
          this.firstName.sendKeys(firstName);
          this.phoneNumber.sendKeys(phoneNumber);
          this.lastName.sendKeys(lastName);
-         Select accountType = new Select(accountTypeDropdown);
-         accountType.selectByValue(accountTypeValue);
+         BrowserUtils.selectBy(accountTypeDropdown, accountTypeValue, "value");
+         Thread.sleep(1000);
          this.zipCode.clear();
+         Thread.sleep(1000);
          this.zipCode.sendKeys(zipCode);
          Assert.assertTrue(termsAndConditionsCheckbox.isDisplayed() && !termsAndConditionsCheckbox.isSelected());
          termsAndConditionsCheckbox.click();
          createAccountButton.click();
-         Thread.sleep(15000);
+
+
 
 
     }

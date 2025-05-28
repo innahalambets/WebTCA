@@ -16,7 +16,7 @@ public class WebPortalVerifyAccountTest extends WebPortalTestBase{
        WebPortalHomePage webPortalHomePage = new WebPortalHomePage(driver);
        WebPortalAccountPage webPortalAccountPage = new WebPortalAccountPage(driver);
        WebPortalVerifyAccountPage webPortalVerifyAccountPage = new WebPortalVerifyAccountPage(driver);
-       webPortalHomePage.signUpNow(driver, "New to TommyClub?", ConfigReader.readProperty("newEmail"));
+       webPortalHomePage.signUpNow(driver, "Welcome to the Club", ConfigReader.readProperty("newEmail"));
        webPortalAccountPage.createAccount(driver, "3", "John", "8473339977","Smith",
                "PrivatePerson", "49423");
        webPortalVerifyAccountPage.enterVerificationCode("");
@@ -24,10 +24,17 @@ public class WebPortalVerifyAccountTest extends WebPortalTestBase{
 
 
 
+
    }
 
    @Test
     public void validateVerificationCodeSignIn(){
+      WebPortalHomePage webPortalHomePage = new WebPortalHomePage(driver);
+      WebPortalVerifyAccountPage webPortalVerifyAccountPage = new WebPortalVerifyAccountPage(driver);
+      webPortalHomePage.logIn(ConfigReader.readProperty("email"));
+      webPortalVerifyAccountPage.enterVerificationCode("");
+      webPortalVerifyAccountPage.clickLoginButton();
+
 
 
 

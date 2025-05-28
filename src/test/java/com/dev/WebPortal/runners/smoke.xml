@@ -6,6 +6,7 @@
      <classes>
          <class name="com.dev.WebPortal.tests.WebPortalHomeTest"> </class>
          <class name="com.dev.WebPortal.tests.WebPortalAccountTest"> </class>
+         <class name="com.dev.WebPortal.tests.WebPortalVerifyAccountTest"> </class>
      </classes>
     </test>
 </suite>

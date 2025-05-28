@@ -19,8 +19,15 @@ public class WebPortalVerifyAccountPage {
     @FindBy (xpath = "//button[@type='submit']")
     WebElement verifyAccountButton;
 
+    @FindBy (xpath = "//input[@type='submit']")
+    WebElement logInButton;
+
 
     public void enterVerificationCode(String code){
+
+        if (code.length()!=5){
+            throw new IllegalArgumentException("Verification code must be 5 digits");
+        }
 
         for (int i = 0; i < 5; i++) {
             inputFields.get(i).clear();
@@ -36,6 +43,10 @@ public void submitVerifyAccountButton(){
 
 
 
+    public void clickLoginButton(){
+
+      logInButton.click();
+    }
 
 
 
