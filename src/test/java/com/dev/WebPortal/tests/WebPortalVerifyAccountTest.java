@@ -17,10 +17,13 @@ public class WebPortalVerifyAccountTest extends WebPortalTestBase{
        WebPortalAccountPage webPortalAccountPage = new WebPortalAccountPage(driver);
        WebPortalVerifyAccountPage webPortalVerifyAccountPage = new WebPortalVerifyAccountPage(driver);
        webPortalHomePage.signUpNow(driver, "Welcome to the Club", ConfigReader.readProperty("newEmail"));
-       webPortalAccountPage.createAccount(driver, "3", "John", "8473339977","Smith",
+       webPortalAccountPage.createAccount(driver, "3", "Inna", "8473339983","Halambets",
                "PrivatePerson", "49423");
-       webPortalVerifyAccountPage.enterVerificationCode("");
+       Thread.sleep(2000);
+       webPortalVerifyAccountPage.enterVerificationCode("12345");
+       Thread.sleep(2000);
        webPortalVerifyAccountPage.submitVerifyAccountButton();
+
 
 
 

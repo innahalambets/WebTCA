@@ -60,12 +60,13 @@ public class WebPortalAccountPage {
          this.phoneNumber.sendKeys(phoneNumber);
          this.lastName.sendKeys(lastName);
          BrowserUtils.selectBy(accountTypeDropdown, accountTypeValue, "value");
-         Thread.sleep(1000);
+         Thread.sleep(3000);
          this.zipCode.clear();
-         Thread.sleep(1000);
+         Thread.sleep(3000);
          this.zipCode.sendKeys(zipCode);
          Assert.assertTrue(termsAndConditionsCheckbox.isDisplayed() && !termsAndConditionsCheckbox.isSelected());
          termsAndConditionsCheckbox.click();
+         Thread.sleep(3000);
          createAccountButton.click();
 
 
