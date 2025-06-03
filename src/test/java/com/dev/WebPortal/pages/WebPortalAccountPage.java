@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import utils.BrowserUtils;
 
+import java.time.Duration;
 import java.util.Set;
 
 public class WebPortalAccountPage {

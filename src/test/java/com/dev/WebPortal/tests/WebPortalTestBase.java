@@ -21,10 +21,9 @@ public class WebPortalTestBase {
         driver= new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        //driver.get(ConfigReader.readProperty("webPortalUrl"));
         driver.get("https://portal.dev-tommycarwash.com/login");
-       // driver= DriverHelper.getDriver();
-      //  driver.get(ConfigReader.readProperty("webPortalUrl"));
+        //driver= DriverHelper.getDriver();
+       // driver.get(ConfigReader.readProperty("webPortalUrl"));
 
 
     }
@@ -37,7 +36,7 @@ public class WebPortalTestBase {
 
         BrowserUtils.getScreenshot(driver);}
 
-        driver.quit();
+      //  driver.quit();
     }
 
 }

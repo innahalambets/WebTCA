@@ -6,6 +6,8 @@ import com.dev.WebPortal.pages.WebPortalVerifyAccountPage;
 import org.testng.annotations.Test;
 import utils.ConfigReader;
 
+import java.time.Duration;
+
 public class WebPortalVerifyAccountTest extends WebPortalTestBase{
 
 
@@ -17,11 +19,11 @@ public class WebPortalVerifyAccountTest extends WebPortalTestBase{
        WebPortalAccountPage webPortalAccountPage = new WebPortalAccountPage(driver);
        WebPortalVerifyAccountPage webPortalVerifyAccountPage = new WebPortalVerifyAccountPage(driver);
        webPortalHomePage.signUpNow(driver, "Welcome to the Club", ConfigReader.readProperty("newEmail"));
-       webPortalAccountPage.createAccount(driver, "3", "Inna", "8473339983","Halambets",
+       webPortalAccountPage.createAccount(driver, "3", "Inna", "8473339947","Halambets",
                "PrivatePerson", "49423");
-       Thread.sleep(2000);
+       Thread.sleep(1000);
        webPortalVerifyAccountPage.enterVerificationCode("12345");
-       Thread.sleep(2000);
+       Thread.sleep(1000);
        webPortalVerifyAccountPage.submitVerifyAccountButton();
 
 
@@ -31,11 +33,13 @@ public class WebPortalVerifyAccountTest extends WebPortalTestBase{
    }
 
    @Test
-    public void validateVerificationCodeSignIn(){
+    public void validateVerificationCodeSignIn() throws InterruptedException {
       WebPortalHomePage webPortalHomePage = new WebPortalHomePage(driver);
       WebPortalVerifyAccountPage webPortalVerifyAccountPage = new WebPortalVerifyAccountPage(driver);
       webPortalHomePage.logIn(ConfigReader.readProperty("email"));
-      webPortalVerifyAccountPage.enterVerificationCode("");
+      Thread.sleep(1000);
+      webPortalVerifyAccountPage.enterVerificationCode("12345");
+      Thread.sleep(1000);
       webPortalVerifyAccountPage.clickLoginButton();
 
 
